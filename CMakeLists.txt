@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
 
-add_custom_target(InstallProject
-        "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}" --target install
-        DEPENDS ${H_PROJECT_NAME}
-        COMMENT "Installing ${H_PROJECT_NAME}")
-
 include(cmake/Config.cmake)
 
 project(${H_PROJECT_NAME} VERSION ${H_PROJECT_VERSION} DESCRIPTION ${H_PROJECT_DESCRIPTION} LANGUAGES CXX)
@@ -15,6 +10,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 include(cmake/Dependencies.cmake)
 include(cmake/Sources.cmake)
+
+add_custom_target(InstallProject "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}" --target install)
 
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
