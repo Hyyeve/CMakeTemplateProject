@@ -8,8 +8,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
-include(cmake/Sources.cmake)
 include(cmake/Dependencies.cmake)
+include(cmake/Sources.cmake)
 
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
@@ -26,12 +26,12 @@ install(FILES
 
 install(
         TARGETS ${H_TARGETS}
-        EXPORT ${H_PROJECT_NAME}Targets
+        EXPORT ProjectTargets
         FILE_SET HEADERS
 )
 
 install(
-        EXPORT ${H_PROJECT_NAME}Targets
+        EXPORT ProjectTargets
         NAMESPACE ${H_PROJECT_NAME}::
         DESTINATION ${CMAKE_INSTALL_DATADIR}/${H_PROJECT_NAME}
 )
